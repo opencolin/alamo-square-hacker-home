@@ -376,6 +376,84 @@
             display: flex;
         }
 
+        /* Nested Rules Styling */
+        .nested-rules {
+            margin-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .nested-rules {
+            border-top-color: #4d4d4d;
+        }
+
+        .nested-rule {
+            background: #f9f9f9;
+            border-left: 4px solid var(--secondary);
+            border-radius: 6px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        body.dark-mode .nested-rule {
+            background: #1a1a1a;
+            border-left-color: #ff6b6b;
+        }
+
+        .nested-header {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .nested-header:hover {
+            background: #f0f0f0;
+        }
+
+        body.dark-mode .nested-header:hover {
+            background: #2d2d2d;
+        }
+
+        .nested-title {
+            font-weight: 500;
+            font-size: 15px;
+            flex: 1;
+        }
+
+        .nested-toggle {
+            font-size: 16px;
+            color: var(--secondary);
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .nested-rule.open .nested-toggle {
+            transform: rotate(180deg);
+        }
+
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .nested-rule.open .nested-content {
+            max-height: 1500px;
+        }
+
+        .nested-rule .meme-container {
+            margin: 15px;
+            margin-bottom: 10px;
+        }
+
+        .nested-rule .rule-text {
+            padding: 0 15px 15px 15px;
+        }
+
         @media (max-width: 600px) {
             header h1 {
                 font-size: 22px;
@@ -613,11 +691,11 @@
             </div>
 
             <!-- PARKING -->
-            <div class="rule-card" data-tags="parking driveway tandem">
+            <div class="rule-card" data-tags="parking driveway tandem blocking announce moving cars photo uber reimbursement unknown car help shuffle busy">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
                         <span class="rule-icon">🚗</span>
-                        <span>Parking Rules Overview</span>
+                        <span>Parking Rules</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
@@ -637,136 +715,114 @@
                                 <li>⚠️ Street sweeping tickets suck: Set a recurring phone reminder to move by 8am</li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="rule-card" data-tags="parking blocking driveway announce">
-                <div class="rule-header" onclick="toggleCard(event)">
-                    <div class="rule-title">
-                        <span class="rule-icon">📢</span>
-                        <span>Before Blocking the Driveway</span>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="rule-content">
-                    <div class="rule-body">
-                        <div class="meme-container">
-                            💬<br>
-                            <span class="meme-label">"blocking driveway 1pm-6pm, keys on fireplace"</span>
-                        </div>
-                        <div class="rule-text">
-                            <ol>
-                                <li><strong>Announce it in the group chat</strong> (30+ minutes notice when possible)
-                                    <p><em>Example: "blocking the driveway 1pm-6pm, keys on the fireplace"</em></p>
-                                </li>
-                                <li><strong>Check for cars:</strong> Before blocking the driveway, see if there's a car in the garage or common room
-                                    <ul>
-                                        <li>If there IS a car: leave your keys in an accessible spot so they can get out</li>
-                                        <li>Take a photo of where you left the keys</li>
-                                        <li>Send the photo to the group chat</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <!-- Nested Parking Rules -->
+                        <div class="nested-rules">
+                            <div class="nested-rule">
+                                <div class="nested-header" onclick="toggleNested(event)">
+                                    <span class="nested-title">📢 Before Blocking the Driveway</span>
+                                    <span class="nested-toggle">▼</span>
+                                </div>
+                                <div class="nested-content">
+                                    <div class="meme-container" style="min-height: 120px;">
+                                        💬<br>
+                                        <span class="meme-label">"blocking driveway 1pm-6pm, keys on fireplace"</span>
+                                    </div>
+                                    <div class="rule-text">
+                                        <ol>
+                                            <li><strong>Announce it in the group chat</strong> (30+ minutes notice when possible)
+                                                <p><em>Example: "blocking the driveway 1pm-6pm, keys on the fireplace"</em></p>
+                                            </li>
+                                            <li><strong>Check for cars:</strong> Before blocking the driveway, see if there's a car in the garage or common room
+                                                <ul>
+                                                    <li>If there IS a car: leave your keys in an accessible spot so they can get out</li>
+                                                    <li>Take a photo of where you left the keys</li>
+                                                    <li>Send the photo to the group chat</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="rule-card" data-tags="parking moving cars keys photo">
-                <div class="rule-header" onclick="toggleCard(event)">
-                    <div class="rule-title">
-                        <span class="rule-icon">📸</span>
-                        <span>If You Need to Move Someone's Car</span>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="rule-content">
-                    <div class="rule-body">
-                        <div class="meme-container">
-                            🚗 ➡️<br>
-                            <span class="meme-label">Document EVERYTHING with photos</span>
-                        </div>
-                        <div class="rule-text">
-                            <ul>
-                                <li>If someone is blocking you, message the group chat with a photo</li>
-                                <li>If they don't respond quickly, you may move their car (if they left keys)</li>
-                                <li><strong>After moving: Put the keys back in the EXACT same spot</strong> you found them</li>
-                                <li>Take a photo and send it to the chat—they need to know where their car is</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="nested-rule">
+                                <div class="nested-header" onclick="toggleNested(event)">
+                                    <span class="nested-title">📸 If You Need to Move Someone's Car</span>
+                                    <span class="nested-toggle">▼</span>
+                                </div>
+                                <div class="nested-content">
+                                    <div class="meme-container" style="min-height: 120px;">
+                                        🚗 ➡️<br>
+                                        <span class="meme-label">Document EVERYTHING with photos</span>
+                                    </div>
+                                    <div class="rule-text">
+                                        <ul>
+                                            <li>If someone is blocking you, message the group chat with a photo</li>
+                                            <li>If they don't respond quickly, you may move their car (if they left keys)</li>
+                                            <li><strong>After moving: Put the keys back in the EXACT same spot</strong> you found them</li>
+                                            <li>Take a photo and send it to the chat—they need to know where their car is</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="rule-card" data-tags="parking blocked uber reimbursement">
-                <div class="rule-header" onclick="toggleCard(event)">
-                    <div class="rule-title">
-                        <span class="rule-icon">🚕</span>
-                        <span>If You're Blocked In/Out</span>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="rule-content">
-                    <div class="rule-body">
-                        <div class="meme-container">
-                            💰<br>
-                            <span class="meme-label">"Thanks for the Uber money!" 😎</span>
-                        </div>
-                        <div class="rule-text">
-                            <ul>
-                                <li>Message the group chat immediately with a photo</li>
-                                <li>If inconvenienced and need to leave: <strong>Take an Uber</strong></li>
-                                <li><strong>The person blocking you will reimburse your round-trip Uber cost</strong></li>
-                                <li>Don't have spare keys? The person blocking you will move their car</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="nested-rule">
+                                <div class="nested-header" onclick="toggleNested(event)">
+                                    <span class="nested-title">🚕 If You're Blocked In/Out</span>
+                                    <span class="nested-toggle">▼</span>
+                                </div>
+                                <div class="nested-content">
+                                    <div class="meme-container" style="min-height: 120px;">
+                                        💰<br>
+                                        <span class="meme-label">"Thanks for the Uber money!" 😎</span>
+                                    </div>
+                                    <div class="rule-text">
+                                        <ul>
+                                            <li>Message the group chat immediately with a photo</li>
+                                            <li>If inconvenienced and need to leave: <strong>Take an Uber</strong></li>
+                                            <li><strong>The person blocking you will reimburse your round-trip Uber cost</strong></li>
+                                            <li>Don't have spare keys? The person blocking you will move their car</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="rule-card" data-tags="parking unknown car photo chat">
-                <div class="rule-header" onclick="toggleCard(event)">
-                    <div class="rule-title">
-                        <span class="rule-icon">❓</span>
-                        <span>If You See an Unknown Car</span>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="rule-content">
-                    <div class="rule-body">
-                        <div class="meme-container">
-                            🚗❓👀<br>
-                            <span class="meme-label">"Who's car is this?"</span>
-                        </div>
-                        <div class="rule-text">
-                            <ul>
-                                <li>Message the group chat with a photo</li>
-                                <li>Let everyone know it's parked in the driveway/blocking the driveway</li>
-                                <li>Better safe than sorry!</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="nested-rule">
+                                <div class="nested-header" onclick="toggleNested(event)">
+                                    <span class="nested-title">❓ If You See an Unknown Car</span>
+                                    <span class="nested-toggle">▼</span>
+                                </div>
+                                <div class="nested-content">
+                                    <div class="meme-container" style="min-height: 120px;">
+                                        🚗❓👀<br>
+                                        <span class="meme-label">"Who's car is this?"</span>
+                                    </div>
+                                    <div class="rule-text">
+                                        <ul>
+                                            <li>Message the group chat with a photo</li>
+                                            <li>Let everyone know it's parked in the driveway/blocking the driveway</li>
+                                            <li>Better safe than sorry!</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="rule-card" data-tags="parking help shuffle busy">
-                <div class="rule-header" onclick="toggleCard(event)">
-                    <div class="rule-title">
-                        <span class="rule-icon">🤝</span>
-                        <span>Can't Help with Shuffling?</span>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="rule-content">
-                    <div class="rule-body">
-                        <div class="meme-container">
-                            🙋<br>
-                            <span class="meme-label">Ask a housemate to help!</span>
-                        </div>
-                        <div class="rule-text">
-                            <p>If you're too busy to move cars, ask another housemate to help.</p>
-                            <p><strong>Communication is key!</strong> We're all in this together. 🏠</p>
+                            <div class="nested-rule">
+                                <div class="nested-header" onclick="toggleNested(event)">
+                                    <span class="nested-title">🤝 Can't Help with Shuffling?</span>
+                                    <span class="nested-toggle">▼</span>
+                                </div>
+                                <div class="nested-content">
+                                    <div class="meme-container" style="min-height: 120px;">
+                                        🙋<br>
+                                        <span class="meme-label">Ask a housemate to help!</span>
+                                    </div>
+                                    <div class="rule-text">
+                                        <p>If you're too busy to move cars, ask another housemate to help.</p>
+                                        <p><strong>Communication is key!</strong> We're all in this together. 🏠</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -967,6 +1023,13 @@
             const card = event.currentTarget.closest('.rule-card');
             card.classList.toggle('open');
             updateProgress();
+        }
+
+        // Toggle Nested Rule
+        function toggleNested(event) {
+            event.stopPropagation();
+            const nestedRule = event.currentTarget.closest('.nested-rule');
+            nestedRule.classList.toggle('open');
         }
 
         // Update Progress Bar
