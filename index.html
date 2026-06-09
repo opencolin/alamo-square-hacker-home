@@ -38,26 +38,46 @@
         }
 
         header {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🏠 💫 ✨";
+            position: absolute;
+            font-size: 60px;
+            top: -20px;
+            left: 10%;
+            opacity: 0.1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         header h1 {
-            font-size: 28px;
+            font-size: 36px;
             margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 18px;
+            opacity: 0.95;
+            font-weight: 500;
         }
 
         .header-meta {
-            font-size: 12px;
-            margin-top: 10px;
-            opacity: 0.8;
+            font-size: 13px;
+            margin-top: 15px;
+            opacity: 0.85;
         }
 
         .controls {
@@ -489,10 +509,10 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏠 Alamo Square Hacker Home</h1>
-            <p>House Manual & Resident Guidelines</p>
+            <h1>🏠 Welcome to Alamo Square! 🎉</h1>
+            <p>Your Complete Home Onboarding Guide</p>
             <div class="header-meta">
-                📍 1218 Fulton Street, San Francisco | June 2026
+                📍 1218 Fulton Street, San Francisco | 2026
             </div>
         </header>
 
@@ -506,23 +526,23 @@
             <div class="rule-card" data-tags="critical furniture">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🚫</span>
-                        <span>No Furniture Without Approval</span>
+                        <span class="rule-icon">🛋️</span>
+                        <span>Before You Bring in Furniture...</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div>
-                            <span class="badge badge-critical">🚨 CRITICAL</span>
+                            <span class="badge badge-critical">✋ Please Read!</span>
                         </div>
                         <div class="meme-container">
                             🪑❌<br>
-                            <span class="meme-label">POV: You brought furniture without asking</span>
+                            <span class="meme-label">Ask first! Always! 🙏</span>
                         </div>
                         <div class="rule-text">
-                            <strong>ABSOLUTELY NO FURNITURE should be brought into the home without approval from the landlord/property manager.</strong>
-                            <p>This is non-negotiable. Every piece of furniture needs explicit approval before entering the building.</p>
+                            <p>We love the vibe here, and part of keeping it great is coordinating furniture! Before bringing any new pieces into the home, just <strong>get approval from the landlord or property manager</strong>.</p>
+                            <p>Think of it as respecting our shared space. Quick message = everyone's happy! 💚</p>
                         </div>
                     </div>
                 </div>
@@ -531,33 +551,33 @@
             <div class="rule-card" data-tags="critical smoking neighbor judy health">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🚬</span>
-                        <span>No Smoking Policy</span>
+                        <span class="rule-icon">💨</span>
+                        <span>Keeping Our Space Fresh & Healthy</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div>
-                            <span class="badge badge-critical">🚨 CRITICAL</span>
-                            <span class="badge badge-warning">⚠️ LEGAL</span>
+                            <span class="badge badge-critical">❤️ Health First</span>
+                            <span class="badge badge-warning">⚠️ Legal</span>
                         </div>
                         <div class="meme-container">
-                            😤 JUDY 👀<br>
-                            <span class="meme-label">"Is that... SMOKE?"</span>
+                            🌬️ ❌<br>
+                            <span class="meme-label">Keep smoke outside the building</span>
                         </div>
                         <div class="rule-text">
-                            <p>This is a <strong>non-smoking building</strong>. Smoking is strictly prohibited:</p>
+                            <p>This is a <strong>smoke-free building</strong> — and we take this seriously because we care about everyone's health, especially our neighbor Judy's family. 💚</p>
+                            <p><strong>No smoking:</strong></p>
                             <ul>
-                                <li>❌ Inside any unit</li>
-                                <li>❌ On porches or patios</li>
-                                <li>❌ Near windows or vents</li>
-                                <li>❌ Within 15 feet of entrances, exits, operable windows, or vents</li>
+                                <li>Inside any unit</li>
+                                <li>On porches or patios</li>
+                                <li>Near windows or vents</li>
+                                <li>Within 15 feet of entrances, exits, operable windows, or vents</li>
                             </ul>
-                            <p><strong>Why this matters:</strong> Smoke drifts to neighboring properties. Our neighbor Judy has family members with serious lung illness. Cigarette smoke also damages walls and finishes, creating costs for everyone.</p>
-                            <p><strong>Legal basis:</strong> San Francisco Health Code Article 19F, Section 1009.22 and California Government Code Sections 7596-7598.</p>
-                            <p><strong>If you smoke:</strong> Please do so well away from the building (e.g., at Alamo Square Park or public curb), away from all windows and entrances.</p>
-                            <p><strong style="color: var(--primary);">Violation consequence:</strong> Smoking inside is a lease violation and grounds for eviction affecting the entire house.</p>
+                            <p><strong>Why?</strong> Smoke drifts and affects neighbors. Judy's family members have serious lung illness and deserve a healthy home. Plus, smoke damages walls and finishes, costing everyone money.</p>
+                            <p><strong>If you smoke:</strong> No worries! Just step outside to Alamo Square Park or the public curb, away from windows and doors. 🚶‍♂️</p>
+                            <p><em>This is backed by SF Health Code Article 19F & California Government Code Sections 7596-7598.</em></p>
                         </div>
                     </div>
                 </div>
@@ -567,20 +587,27 @@
             <div class="rule-card" data-tags="general community neighbor">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">💚</span>
-                        <span>Be Nice to Neighbor Judy</span>
+                        <span class="rule-icon">👋</span>
+                        <span>Meet the Neighbors: Judy Edition</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            🤝<br>
-                            <span class="meme-label">Judy's happiness = Our peace of mind</span>
+                            👩 💚 🏡<br>
+                            <span class="meme-label">Our amazing neighbor deserves our respect</span>
                         </div>
                         <div class="rule-text">
-                            <p>Judy is our neighbor and she will text frequently if she detects smoke or issues. Let's be respectful and considerate of her and her family's health needs.</p>
-                            <p>Simple gestures of kindness go a long way! 🙏</p>
+                            <p>Meet Judy! She's our neighbor right next door, and she's the best. She looks out for the building and will reach out if there are issues (especially about smoke).</p>
+                            <p><strong>How to keep Judy happy:</strong></p>
+                            <ul>
+                                <li>🚬 Keep smoke away (seriously, this one matters most!)</li>
+                                <li>🔇 Be mindful of noise</li>
+                                <li>👋 A friendly wave = instant friend</li>
+                                <li>💬 She might reach out — respond kindly!</li>
+                            </ul>
+                            <p>Being kind to our neighbor is being kind to ourselves. Let's all get along! 🤝</p>
                         </div>
                     </div>
                 </div>
@@ -589,23 +616,25 @@
             <div class="rule-card" data-tags="general cleanliness tidy">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🧹</span>
-                        <span>Keep Common Areas Tidy</span>
+                        <span class="rule-icon">✨</span>
+                        <span>Keeping It Clean & Bright</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            ✨🧽✨<br>
-                            <span class="meme-label">Cleanliness is next to happiness</span>
+                            🧽 ✨ 😊<br>
+                            <span class="meme-label">A clean space is a happy space</span>
                         </div>
                         <div class="rule-text">
+                            <p>We share this awesome space together, so let's keep it feeling fresh and welcoming! 🏠</p>
                             <ul>
-                                <li>Be mindful of shared spaces</li>
-                                <li>Clean up after yourself immediately</li>
-                                <li>Leave no trace in common areas</li>
+                                <li>👀 Be mindful of shared spaces</li>
+                                <li>🧹 Clean up after yourself — right away!</li>
+                                <li>✨ Leave no trace in common areas</li>
                             </ul>
+                            <p>Think of it as respecting everyone else who lives here. You'd want the same! 💚</p>
                         </div>
                     </div>
                 </div>
@@ -615,24 +644,25 @@
             <div class="rule-card" data-tags="kitchen dishes sink dishwasher">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🍽️</span>
-                        <span>Dirty Dishes Rule</span>
+                        <span class="rule-icon">🍴</span>
+                        <span>The Dishes Love the Dishwasher</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            🍴➡️🧼<br>
-                            <span class="meme-label">STOP leaving dishes in the sink</span>
+                            🍴➡️💦<br>
+                            <span class="meme-label">Right into the dishwasher!</span>
                         </div>
                         <div class="rule-text">
-                            <p><strong>Put dirty dishes in the dishwasher immediately. Do not leave them in the sink.</strong></p>
+                            <p>This one's simple: <strong>dirty dishes go straight into the dishwasher</strong> — not the sink! 🧼</p>
                             <ul>
-                                <li>Wash dishes promptly after use</li>
-                                <li>Load the dishwasher or hand-wash</li>
-                                <li>✅ No exceptions—the sink should always be clear</li>
+                                <li>✨ Use the dishwasher whenever you can</li>
+                                <li>🤝 Or hand-wash right away</li>
+                                <li>💪 Either way works — just keep the sink clear!</li>
                             </ul>
+                            <p>A clean sink makes everyone smile. Thank you for being awesome! 😊</p>
                         </div>
                     </div>
                 </div>
@@ -642,24 +672,26 @@
             <div class="rule-card" data-tags="security doors locks fingerprint">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🔐</span>
-                        <span>Smart Door Locks</span>
+                        <span class="rule-icon">🔓</span>
+                        <span>The Smart Door Lock Secret</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div>
-                            <span class="badge badge-warning">⚠️ IMPORTANT</span>
+                            <span class="badge badge-warning">💡 Pro Tip</span>
                         </div>
                         <div class="meme-container">
-                            🔒 vs ⭕<br>
-                            <span class="meme-label">"Choose wisely, or get locked out"</span>
+                            ⭕ = 🟢 GOOD<br>
+                            🔒 = 🔴 AVOID<br>
+                            <span class="meme-label">Circle position = always available!</span>
                         </div>
                         <div class="rule-text">
-                            <p><strong>Default Setting:</strong> Circle / Up position</p>
-                            <p>The front and back doors should generally be set to the circle/up position all the time for regular access.</p>
-                            <p><strong style="color: var(--primary);">⚠️ DO NOT use the "lock" symbol</strong> unless you've set up your fingerprints on that door knob. You will be locked out otherwise.</p>
+                            <p>Our smart locks are pretty cool! Here's the golden rule: <strong>use the circle/up position by default</strong>. 🟢</p>
+                            <p><strong>Why?</strong> The circle/up position means the door is easy to open for everyone. Keep the front and back doors here most of the time.</p>
+                            <p><strong style="color: var(--warning);">Don't use the lock symbol 🔒</strong> unless you've already set up your fingerprints on that lock. Otherwise... oops, you're locked out! 😅</p>
+                            <p><em>Quick tip:</em> If you want to set up fingerprints, just ask the house manager!</p>
                         </div>
                     </div>
                 </div>
@@ -669,22 +701,24 @@
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
                         <span class="rule-icon">🔑</span>
-                        <span>Key Management</span>
+                        <span>Never Lose Your Keys Again!</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            🔑❓<br>
-                            <span class="meme-label">"WHERE ARE MY KEYS?!" - You at 3am</span>
+                            🔑 📍<br>
+                            <span class="meme-label">"Always in the same spot!"</span>
                         </div>
                         <div class="rule-text">
+                            <p>Here's a life hack: <strong>keys have a home, and it should always be the same place</strong>. 🏠</p>
                             <ul>
-                                <li><strong>Start a habit:</strong> Always put your keys in the same place every time</li>
-                                <li><strong>Have a backup:</strong> Keep a spare key in a specific, known spot</li>
-                                <li>Building good habits prevents frustration and lockouts</li>
+                                <li>🎯 <strong>Pick a spot:</strong> Hook, table corner, shelf — just pick one</li>
+                                <li>🔁 <strong>Use it every time:</strong> Make it a habit. Keys in, keys out, same spot</li>
+                                <li>🛟 <strong>Have a backup:</strong> Keep a spare key in a specific spot too</li>
                             </ul>
+                            <p>This one simple trick saves SO much frustration. Trust us! 😊</p>
                         </div>
                     </div>
                 </div>
@@ -694,25 +728,25 @@
             <div class="rule-card" data-tags="parking driveway tandem blocking announce moving cars photo uber reimbursement unknown car help shuffle busy">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">🚗</span>
-                        <span>Parking Rules</span>
+                        <span class="rule-icon">🅿️</span>
+                        <span>The Tandem Parking Game</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            🅿️ 📋<br>
-                            <span class="meme-label">8 years of tandem parking wisdom</span>
+                            🚗 🚗 🎯<br>
+                            <span class="meme-label">Communication = Peace of mind</span>
                         </div>
                         <div class="rule-text">
-                            <p>This home has tandem parking. We've developed these rules over 8 years of shared use to keep everyone sane.</p>
-                            <p><strong>Legal info:</strong></p>
+                            <p>Welcome to tandem parking! It's like a fun puzzle, and after 8 years, we've figured out the magic formula: <strong>communication + photos = everyone gets their car out</strong>. 🎉</p>
+                            <p><strong>The fun stuff you can do:</strong></p>
                             <ul>
-                                <li>✅ It IS legal to block our own driveway</li>
-                                <li>✅ It IS legal to park in the driveway</li>
-                                <li>❌ It is NOT legal to block the sidewalk</li>
-                                <li>⚠️ Street sweeping tickets suck: Set a recurring phone reminder to move by 8am</li>
+                                <li>✅ Block the driveway when you want (just announce!)</li>
+                                <li>✅ Park in the driveway (super convenient!)</li>
+                                <li>❌ Block the sidewalk (SF says nope)</li>
+                                <li>⏰ Street sweeping on [day]? Set a reminder for 8am!</li>
                             </ul>
                         </div>
 
@@ -720,106 +754,121 @@
                         <div class="nested-rules">
                             <div class="nested-rule">
                                 <div class="nested-header" onclick="toggleNested(event)">
-                                    <span class="nested-title">📢 Before Blocking the Driveway</span>
+                                    <span class="nested-title">📢 Planning to Block the Driveway?</span>
                                     <span class="nested-toggle">▼</span>
                                 </div>
                                 <div class="nested-content">
                                     <div class="meme-container" style="min-height: 120px;">
-                                        💬<br>
-                                        <span class="meme-label">"blocking driveway 1pm-6pm, keys on fireplace"</span>
+                                        💬✨<br>
+                                        <span class="meme-label">"blocking driveway 1-6pm, keys on fireplace!"</span>
                                     </div>
                                     <div class="rule-text">
+                                        <p>Love it! Just two simple steps:</p>
                                         <ol>
-                                            <li><strong>Announce it in the group chat</strong> (30+ minutes notice when possible)
-                                                <p><em>Example: "blocking the driveway 1pm-6pm, keys on the fireplace"</em></p>
+                                            <li><strong>Shout it out in the group chat!</strong> Give people a heads up (30+ min is great)
+                                                <p><em>Example: "blocking driveway 1pm-6pm, keys on the fireplace"</em></p>
                                             </li>
-                                            <li><strong>Check for cars:</strong> Before blocking the driveway, see if there's a car in the garage or common room
+                                            <li><strong>Check for other cars first</strong> — peek in the garage or common areas
                                                 <ul>
-                                                    <li>If there IS a car: leave your keys in an accessible spot so they can get out</li>
-                                                    <li>Take a photo of where you left the keys</li>
-                                                    <li>Send the photo to the group chat</li>
+                                                    <li>Another car there? Leave your keys in an easy-to-find spot! 🔑</li>
+                                                    <li>📸 Snap a photo of where you left them</li>
+                                                    <li>💬 Send that photo to the group chat (proof!)</li>
                                                 </ul>
                                             </li>
                                         </ol>
+                                        <p>That's it! You're a parking legend! 🏆</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="nested-rule">
                                 <div class="nested-header" onclick="toggleNested(event)">
-                                    <span class="nested-title">📸 If You Need to Move Someone's Car</span>
+                                    <span class="nested-title">📸 Someone's Blocking You?</span>
                                     <span class="nested-toggle">▼</span>
                                 </div>
                                 <div class="nested-content">
                                     <div class="meme-container" style="min-height: 120px;">
-                                        🚗 ➡️<br>
-                                        <span class="meme-label">Document EVERYTHING with photos</span>
+                                        🚗 ➡️ 📷<br>
+                                        <span class="meme-label">Document + Communicate!</span>
                                     </div>
                                     <div class="rule-text">
+                                        <p>No problem! Here's the protocol:</p>
                                         <ul>
-                                            <li>If someone is blocking you, message the group chat with a photo</li>
-                                            <li>If they don't respond quickly, you may move their car (if they left keys)</li>
-                                            <li><strong>After moving: Put the keys back in the EXACT same spot</strong> you found them</li>
-                                            <li>Take a photo and send it to the chat—they need to know where their car is</li>
+                                            <li>📱 Message the group chat with a photo (be polite!)</li>
+                                            <li>⏳ Wait a bit for them to respond</li>
+                                            <li>🔑 If they left keys, you can move their car (they anticipated this!)</li>
+                                            <li><strong>🔑 Keys back = EXACT spot</strong> you found them. Seriously, don't move 'em!</li>
+                                            <li>📸 Snap a photo of the keys in their new spot</li>
+                                            <li>💬 Send that photo to the group chat so they know where to find their car</li>
                                         </ul>
+                                        <p>Good teamwork! 🤝</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="nested-rule">
                                 <div class="nested-header" onclick="toggleNested(event)">
-                                    <span class="nested-title">🚕 If You're Blocked In/Out</span>
+                                    <span class="nested-title">🚕 You're Stuck? No Problem!</span>
                                     <span class="nested-toggle">▼</span>
                                 </div>
                                 <div class="nested-content">
                                     <div class="meme-container" style="min-height: 120px;">
-                                        💰<br>
-                                        <span class="meme-label">"Thanks for the Uber money!" 😎</span>
+                                        💰 ✨<br>
+                                        <span class="meme-label">Uber's on them!</span>
                                     </div>
                                     <div class="rule-text">
+                                        <p>If someone's blocking you and you need to get somewhere:</p>
                                         <ul>
-                                            <li>Message the group chat immediately with a photo</li>
-                                            <li>If inconvenienced and need to leave: <strong>Take an Uber</strong></li>
-                                            <li><strong>The person blocking you will reimburse your round-trip Uber cost</strong></li>
-                                            <li>Don't have spare keys? The person blocking you will move their car</li>
+                                            <li>📸 Message the group chat + send a photo (let them know!)</li>
+                                            <li>🚕 Need to leave NOW? Take an Uber!</li>
+                                            <li>💸 <strong>The person blocking you will pay for your round-trip Uber!</strong> Just get a screenshot</li>
+                                            <li>🔑 No spare keys left? They'll move their car for you</li>
                                         </ul>
+                                        <p>We all look out for each other here! 💚</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="nested-rule">
                                 <div class="nested-header" onclick="toggleNested(event)">
-                                    <span class="nested-title">❓ If You See an Unknown Car</span>
+                                    <span class="nested-title">❓ Mystery Car Alert!</span>
                                     <span class="nested-toggle">▼</span>
                                 </div>
                                 <div class="nested-content">
                                     <div class="meme-container" style="min-height: 120px;">
-                                        🚗❓👀<br>
-                                        <span class="meme-label">"Who's car is this?"</span>
+                                        🚗❓🔍<br>
+                                        <span class="meme-label">Who's car is THIS?</span>
                                     </div>
                                     <div class="rule-text">
+                                        <p>Spotted a car you don't recognize? Just let everyone know!</p>
                                         <ul>
-                                            <li>Message the group chat with a photo</li>
-                                            <li>Let everyone know it's parked in the driveway/blocking the driveway</li>
-                                            <li>Better safe than sorry!</li>
+                                            <li>📸 Snap a photo of the mystery car</li>
+                                            <li>💬 Post in the group chat with: "Unknown car in driveway/blocking" + photo</li>
+                                            <li>🤷 Someone will probably recognize it, or we figure it out together!</li>
                                         </ul>
+                                        <p>Community watch = everyone stays informed! 👀</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="nested-rule">
                                 <div class="nested-header" onclick="toggleNested(event)">
-                                    <span class="nested-title">🤝 Can't Help with Shuffling?</span>
+                                    <span class="nested-title">🤝 Need Help Moving Cars?</span>
                                     <span class="nested-toggle">▼</span>
                                 </div>
                                 <div class="nested-content">
                                     <div class="meme-container" style="min-height: 120px;">
-                                        🙋<br>
-                                        <span class="meme-label">Ask a housemate to help!</span>
+                                        🙋 ❤️<br>
+                                        <span class="meme-label">We've got your back!</span>
                                     </div>
                                     <div class="rule-text">
-                                        <p>If you're too busy to move cars, ask another housemate to help.</p>
-                                        <p><strong>Communication is key!</strong> We're all in this together. 🏠</p>
+                                        <p>Swamped? Too busy to shuffle cars? No stress! 💪</p>
+                                        <ul>
+                                            <li>💬 Ask another housemate for help in the group chat</li>
+                                            <li>👥 "Hey, can someone move my car real quick?" — usually someone can!</li>
+                                            <li>🎯 Communication is everything — we all look out for each other</li>
+                                        </ul>
+                                        <p>That's what housemates are for! 🏠💚</p>
                                     </div>
                                 </div>
                             </div>
@@ -833,23 +882,24 @@
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
                         <span class="rule-icon">🧺</span>
-                        <span>Laundry Quiet Hours</span>
+                        <span>The Golden Laundry Rule: 10pm Cutoff</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div>
-                            <span class="badge badge-critical">🚨 CRITICAL</span>
+                            <span class="badge badge-critical">💤 SLEEP PROTECTION</span>
                         </div>
                         <div class="meme-container">
-                            😴 ⏰<br>
-                            <span class="meme-label">"Why would you run laundry at 11pm??"</span>
+                            😴 ⏰ 🚫<br>
+                            <span class="meme-label">No laundry after 10pm!</span>
                         </div>
                         <div class="rule-text">
-                            <p><strong>10pm is silent time</strong></p>
-                            <p>Do NOT run laundry after 10pm—the machines are loud and are located next to someone's unit.</p>
-                            <p><strong style="color: var(--primary);">Respect this boundary. Sleep deprivation is real.</strong> 💤</p>
+                            <p><strong>After 10pm = Silent time!</strong> This means: no washing machines, dryers, or anything loud. 🤫</p>
+                            <p><strong>Why?</strong> The laundry room is right next to someone's bedroom, and those machines are LOUD. Imagine trying to sleep with that noise...</p>
+                            <p><strong>The rule is simple:</strong> Finish your laundry by 10pm, or wait until morning. Your neighbor will thank you! 😊</p>
+                            <p><em>Bonus: Your clothes turn out better with daylight anyway!</em> ☀️</p>
                         </div>
                     </div>
                 </div>
@@ -859,19 +909,21 @@
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
                         <span class="rule-icon">🔧</span>
-                        <span>Upstairs Washing Machine Maintenance</span>
+                        <span>Washing Machine TLC (Tender Love & Care)</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            🚰<br>
-                            <span class="meme-label">Time for the seasonal drain!</span>
+                            🚰 ✨<br>
+                            <span class="meme-label">Keep the machine happy!</span>
                         </div>
                         <div class="rule-text">
-                            <p>The upstairs washing machine needs draining periodically (approximately every 6 months).</p>
-                            <p><strong>Contact the house manager</strong> when this is needed. It's fairly simple, but check with them before attempting it yourself.</p>
+                            <p>Our upstairs washing machine is a trooper, and it needs a little love every so often! 💕</p>
+                            <p><strong>About every 6 months:</strong> The machine needs a drain to stay in tip-top shape.</p>
+                            <p><strong>What to do:</strong> Just reach out to the house manager and let them know. It's quick and easy! No need to DIY unless they ask. 😊</p>
+                            <p>Keep the machine happy, and it'll keep your clothes clean! 🧺</p>
                         </div>
                     </div>
                 </div>
@@ -882,12 +934,15 @@
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
                         <span class="rule-icon">✅</span>
-                        <span>House Rules Checklist</span>
+                        <span>The Onboarding Checklist (Let's Go!)</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
+                        <div style="margin-bottom: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px; text-align: center; color: #2e7d32;">
+                            <p><strong>Check these off as you learn about the house! You got this! 🚀</strong></p>
+                        </div>
                         <div class="checklist">
                             <div class="checklist-item">
                                 <input type="checkbox" id="check1">
@@ -934,26 +989,28 @@
             <div class="rule-card" data-tags="contact schedule calendar book">
                 <div class="rule-header" onclick="toggleCard(event)">
                     <div class="rule-title">
-                        <span class="rule-icon">📅</span>
-                        <span>Scheduling & Availability</span>
+                        <span class="rule-icon">🎉</span>
+                        <span>Let's Get to Know Each Other!</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="rule-content">
                     <div class="rule-body">
                         <div class="meme-container">
-                            👋<br>
-                            <span class="meme-label">Let's chat! (Virtually or at the hot tub 🛁)</span>
+                            👋 💬 ☕<br>
+                            <span class="meme-label">Happy to chat anytime!</span>
                         </div>
                         <div class="rule-text">
-                            <p>The house manager is happy to meet:</p>
+                            <p>Got questions about the house? Just want to chat? The house manager is always open to it! 💚</p>
+                            <p><strong>Pick your vibe:</strong></p>
                             <ul>
-                                <li>Virtually</li>
-                                <li>At the house</li>
-                                <li>At Frontier Tower</li>
-                                <li>In the hot tub 🛁</li>
+                                <li>💻 Virtual call</li>
+                                <li>🏠 Meet at the house</li>
+                                <li>🏢 Frontier Tower</li>
+                                <li>🛁 The hot tub (yes, really!)</li>
                             </ul>
-                            <p><strong>Schedule here:</strong> <a href="https://colin.chat" target="_blank">https://colin.chat</a></p>
+                            <p><strong>Book a time here:</strong> <a href="https://colin.chat" target="_blank" style="color: var(--secondary); font-weight: bold;">https://colin.chat</a></p>
+                            <p><em>Whether you need help, have questions, or just want to hang out — you're always welcome! 🎉</em></p>
                         </div>
                     </div>
                 </div>
@@ -965,9 +1022,10 @@
         </div>
 
         <footer>
-            <p>Alamo Square Hacker Home Manual | 1218 Fulton Street, San Francisco</p>
-            <p>Last Updated: June 2026 | Questions? Reach out to the house manager</p>
-            <p>🏠 Making shared living great through communication and respect 🤝</p>
+            <p>🏠 <strong>Alamo Square Hacker Home</strong> | 1218 Fulton Street, San Francisco</p>
+            <p>Your Home Onboarding Guide | 2026</p>
+            <p>🎉 Making shared living awesome through kindness, communication & respect 💚</p>
+            <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">Questions? Questions? Have an idea? Reach out! We're all learning together. ✨</p>
         </footer>
     </div>
 
