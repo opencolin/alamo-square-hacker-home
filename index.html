@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alamo Square Hacker Home Manual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --warning: #ffa502;
+            --success: #26de81;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-meta {
+            font-size: 12px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(78, 205, 196, 0.2);
+        }
+
+        .theme-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode .container {
+            background: #2d2d2d;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .controls {
+            background: #3d3d3d;
+            border-bottom-color: #4d4d4d;
+        }
+
+        body.dark-mode .search-box {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border-color: #4d4d4d;
+        }
+
+        .rules-section {
+            padding: 20px;
+        }
+
+        .rule-card {
+            background: white;
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.dark-mode .rule-card {
+            background: #3d3d3d;
+            border-left-color: var(--secondary);
+        }
+
+        .rule-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .rule-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .rule-title {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .rule-icon {
+            font-size: 24px;
+        }
+
+        .toggle-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .rule-card.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .rule-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .rule-card.open .rule-content {
+            max-height: 2000px;
+        }
+
+        .rule-body {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .rule-body {
+            border-top-color: #4d4d4d;
+        }
+
+        .meme-container {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px dashed var(--secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 60px;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .meme-label {
+            font-size: 12px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .rule-text {
+            line-height: 1.6;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .rule-text ul, .rule-text ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .rule-text li {
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-critical {
+            background: #ffebee;
+            color: var(--primary);
+        }
+
+        body.dark-mode .badge-critical {
+            background: #4a1a1a;
+        }
+
+        .badge-warning {
+            background: #fff3e0;
+            color: var(--warning);
+        }
+
+        body.dark-mode .badge-warning {
+            background: #4a3a1a;
+        }
+
+        .badge-info {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        body.dark-mode .badge-info {
+            background: #1a3a4a;
+        }
+
+        .checklist {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        body.dark-mode .checklist {
+            background: #1a1a1a;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checklist-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checklist-item input {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .checklist-item input:checked + label {
+            color: var(--success);
+            text-decoration: line-through;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd;
+        }
+
+        body.dark-mode footer {
+            background: #1a1a1a;
+            color: #999;
+            border-top-color: #4d4d4d;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 4px;
+            margin-top: 10px;
+        }
+
+        body.dark-mode .progress-bar {
+            background: #4d4d4d;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 22px;
+            }
+
+            .rule-title {
+                font-size: 16px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .rule-header {
+                padding: 15px;
+            }
+
+            .rule-body {
+                padding: 0 15px 15px 15px;
+            }
+
+            .meme-container {
+                min-height: 140px;
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 Alamo Square Hacker Home</h1>
+            <p>House Manual & Resident Guidelines</p>
+            <div class="header-meta">
+                📍 1218 Fulton Street, San Francisco | June 2026
+            </div>
+        </header>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search rules... (e.g., 'smoking', 'parking')">
+            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+        </div>
+
+        <div class="rules-section">
+            <!-- CRITICAL RULES -->
+            <div class="rule-card" data-tags="critical furniture">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🚫</span>
+                        <span>No Furniture Without Approval</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div>
+                            <span class="badge badge-critical">🚨 CRITICAL</span>
+                        </div>
+                        <div class="meme-container">
+                            🪑❌<br>
+                            <span class="meme-label">POV: You brought furniture without asking</span>
+                        </div>
+                        <div class="rule-text">
+                            <strong>ABSOLUTELY NO FURNITURE should be brought into the home without approval from the landlord/property manager.</strong>
+                            <p>This is non-negotiable. Every piece of furniture needs explicit approval before entering the building.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="critical smoking neighbor judy health">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🚬</span>
+                        <span>No Smoking Policy</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div>
+                            <span class="badge badge-critical">🚨 CRITICAL</span>
+                            <span class="badge badge-warning">⚠️ LEGAL</span>
+                        </div>
+                        <div class="meme-container">
+                            😤 JUDY 👀<br>
+                            <span class="meme-label">"Is that... SMOKE?"</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>This is a <strong>non-smoking building</strong>. Smoking is strictly prohibited:</p>
+                            <ul>
+                                <li>❌ Inside any unit</li>
+                                <li>❌ On porches or patios</li>
+                                <li>❌ Near windows or vents</li>
+                                <li>❌ Within 15 feet of entrances, exits, operable windows, or vents</li>
+                            </ul>
+                            <p><strong>Why this matters:</strong> Smoke drifts to neighboring properties. Our neighbor Judy has family members with serious lung illness. Cigarette smoke also damages walls and finishes, creating costs for everyone.</p>
+                            <p><strong>Legal basis:</strong> San Francisco Health Code Article 19F, Section 1009.22 and California Government Code Sections 7596-7598.</p>
+                            <p><strong>If you smoke:</strong> Please do so well away from the building (e.g., at Alamo Square Park or public curb), away from all windows and entrances.</p>
+                            <p><strong style="color: var(--primary);">Violation consequence:</strong> Smoking inside is a lease violation and grounds for eviction affecting the entire house.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GENERAL RULES -->
+            <div class="rule-card" data-tags="general community neighbor">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">💚</span>
+                        <span>Be Nice to Neighbor Judy</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🤝<br>
+                            <span class="meme-label">Judy's happiness = Our peace of mind</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>Judy is our neighbor and she will text frequently if she detects smoke or issues. Let's be respectful and considerate of her and her family's health needs.</p>
+                            <p>Simple gestures of kindness go a long way! 🙏</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="general cleanliness tidy">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🧹</span>
+                        <span>Keep Common Areas Tidy</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            ✨🧽✨<br>
+                            <span class="meme-label">Cleanliness is next to happiness</span>
+                        </div>
+                        <div class="rule-text">
+                            <ul>
+                                <li>Be mindful of shared spaces</li>
+                                <li>Clean up after yourself immediately</li>
+                                <li>Leave no trace in common areas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KITCHEN -->
+            <div class="rule-card" data-tags="kitchen dishes sink dishwasher">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🍽️</span>
+                        <span>Dirty Dishes Rule</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🍴➡️🧼<br>
+                            <span class="meme-label">STOP leaving dishes in the sink</span>
+                        </div>
+                        <div class="rule-text">
+                            <p><strong>Put dirty dishes in the dishwasher immediately. Do not leave them in the sink.</strong></p>
+                            <ul>
+                                <li>Wash dishes promptly after use</li>
+                                <li>Load the dishwasher or hand-wash</li>
+                                <li>✅ No exceptions—the sink should always be clear</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOORS & SECURITY -->
+            <div class="rule-card" data-tags="security doors locks fingerprint">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🔐</span>
+                        <span>Smart Door Locks</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div>
+                            <span class="badge badge-warning">⚠️ IMPORTANT</span>
+                        </div>
+                        <div class="meme-container">
+                            🔒 vs ⭕<br>
+                            <span class="meme-label">"Choose wisely, or get locked out"</span>
+                        </div>
+                        <div class="rule-text">
+                            <p><strong>Default Setting:</strong> Circle / Up position</p>
+                            <p>The front and back doors should generally be set to the circle/up position all the time for regular access.</p>
+                            <p><strong style="color: var(--primary);">⚠️ DO NOT use the "lock" symbol</strong> unless you've set up your fingerprints on that door knob. You will be locked out otherwise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="security keys management backup">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🔑</span>
+                        <span>Key Management</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🔑❓<br>
+                            <span class="meme-label">"WHERE ARE MY KEYS?!" - You at 3am</span>
+                        </div>
+                        <div class="rule-text">
+                            <ul>
+                                <li><strong>Start a habit:</strong> Always put your keys in the same place every time</li>
+                                <li><strong>Have a backup:</strong> Keep a spare key in a specific, known spot</li>
+                                <li>Building good habits prevents frustration and lockouts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARKING -->
+            <div class="rule-card" data-tags="parking driveway tandem">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🚗</span>
+                        <span>Parking Rules Overview</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🅿️ 📋<br>
+                            <span class="meme-label">8 years of tandem parking wisdom</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>This home has tandem parking. We've developed these rules over 8 years of shared use to keep everyone sane.</p>
+                            <p><strong>Legal info:</strong></p>
+                            <ul>
+                                <li>✅ It IS legal to block our own driveway</li>
+                                <li>✅ It IS legal to park in the driveway</li>
+                                <li>❌ It is NOT legal to block the sidewalk</li>
+                                <li>⚠️ Street sweeping tickets suck: Set a recurring phone reminder to move by 8am</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="parking blocking driveway announce">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">📢</span>
+                        <span>Before Blocking the Driveway</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            💬<br>
+                            <span class="meme-label">"blocking driveway 1pm-6pm, keys on fireplace"</span>
+                        </div>
+                        <div class="rule-text">
+                            <ol>
+                                <li><strong>Announce it in the group chat</strong> (30+ minutes notice when possible)
+                                    <p><em>Example: "blocking the driveway 1pm-6pm, keys on the fireplace"</em></p>
+                                </li>
+                                <li><strong>Check for cars:</strong> Before blocking the driveway, see if there's a car in the garage or common room
+                                    <ul>
+                                        <li>If there IS a car: leave your keys in an accessible spot so they can get out</li>
+                                        <li>Take a photo of where you left the keys</li>
+                                        <li>Send the photo to the group chat</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="parking moving cars keys photo">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">📸</span>
+                        <span>If You Need to Move Someone's Car</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🚗 ➡️<br>
+                            <span class="meme-label">Document EVERYTHING with photos</span>
+                        </div>
+                        <div class="rule-text">
+                            <ul>
+                                <li>If someone is blocking you, message the group chat with a photo</li>
+                                <li>If they don't respond quickly, you may move their car (if they left keys)</li>
+                                <li><strong>After moving: Put the keys back in the EXACT same spot</strong> you found them</li>
+                                <li>Take a photo and send it to the chat—they need to know where their car is</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="parking blocked uber reimbursement">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🚕</span>
+                        <span>If You're Blocked In/Out</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            💰<br>
+                            <span class="meme-label">"Thanks for the Uber money!" 😎</span>
+                        </div>
+                        <div class="rule-text">
+                            <ul>
+                                <li>Message the group chat immediately with a photo</li>
+                                <li>If inconvenienced and need to leave: <strong>Take an Uber</strong></li>
+                                <li><strong>The person blocking you will reimburse your round-trip Uber cost</strong></li>
+                                <li>Don't have spare keys? The person blocking you will move their car</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="parking unknown car photo chat">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">❓</span>
+                        <span>If You See an Unknown Car</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🚗❓👀<br>
+                            <span class="meme-label">"Who's car is this?"</span>
+                        </div>
+                        <div class="rule-text">
+                            <ul>
+                                <li>Message the group chat with a photo</li>
+                                <li>Let everyone know it's parked in the driveway/blocking the driveway</li>
+                                <li>Better safe than sorry!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="parking help shuffle busy">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🤝</span>
+                        <span>Can't Help with Shuffling?</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🙋<br>
+                            <span class="meme-label">Ask a housemate to help!</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>If you're too busy to move cars, ask another housemate to help.</p>
+                            <p><strong>Communication is key!</strong> We're all in this together. 🏠</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAUNDRY -->
+            <div class="rule-card" data-tags="laundry quiet hours 10pm">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🧺</span>
+                        <span>Laundry Quiet Hours</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div>
+                            <span class="badge badge-critical">🚨 CRITICAL</span>
+                        </div>
+                        <div class="meme-container">
+                            😴 ⏰<br>
+                            <span class="meme-label">"Why would you run laundry at 11pm??"</span>
+                        </div>
+                        <div class="rule-text">
+                            <p><strong>10pm is silent time</strong></p>
+                            <p>Do NOT run laundry after 10pm—the machines are loud and are located next to someone's unit.</p>
+                            <p><strong style="color: var(--primary);">Respect this boundary. Sleep deprivation is real.</strong> 💤</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card" data-tags="laundry maintenance washing machine drain">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">🔧</span>
+                        <span>Upstairs Washing Machine Maintenance</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            🚰<br>
+                            <span class="meme-label">Time for the seasonal drain!</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>The upstairs washing machine needs draining periodically (approximately every 6 months).</p>
+                            <p><strong>Contact the house manager</strong> when this is needed. It's fairly simple, but check with them before attempting it yourself.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHECKLIST -->
+            <div class="rule-card" data-tags="checklist rules">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">✅</span>
+                        <span>House Rules Checklist</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check1">
+                                <label for="check1">I understand the no-smoking policy and its legal requirements</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check2">
+                                <label for="check2">I will announce before blocking the driveway</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check3">
+                                <label for="check3">I will use the circle/up position on door locks, not the lock symbol</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check4">
+                                <label for="check4">I will put dishes in the dishwasher immediately</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check5">
+                                <label for="check5">I will respect the 10pm laundry cutoff</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check6">
+                                <label for="check6">I will keep my keys in a consistent place</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check7">
+                                <label for="check7">I will be respectful to neighbor Judy</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check8">
+                                <label for="check8">I will not bring furniture without approval</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check9">
+                                <label for="check9">I understand the tandem parking rules and will communicate in the group chat</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="rule-card" data-tags="contact schedule calendar book">
+                <div class="rule-header" onclick="toggleCard(event)">
+                    <div class="rule-title">
+                        <span class="rule-icon">📅</span>
+                        <span>Scheduling & Availability</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="rule-content">
+                    <div class="rule-body">
+                        <div class="meme-container">
+                            👋<br>
+                            <span class="meme-label">Let's chat! (Virtually or at the hot tub 🛁)</span>
+                        </div>
+                        <div class="rule-text">
+                            <p>The house manager is happy to meet:</p>
+                            <ul>
+                                <li>Virtually</li>
+                                <li>At the house</li>
+                                <li>At Frontier Tower</li>
+                                <li>In the hot tub 🛁</li>
+                            </ul>
+                            <p><strong>Schedule here:</strong> <a href="https://colin.chat" target="_blank">https://colin.chat</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <footer>
+            <p>Alamo Square Hacker Home Manual | 1218 Fulton Street, San Francisco</p>
+            <p>Last Updated: June 2026 | Questions? Reach out to the house manager</p>
+            <p>🏠 Making shared living great through communication and respect 🤝</p>
+        </footer>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ Light Mode';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        });
+
+        // Search Functionality
+        const searchBox = document.getElementById('searchBox');
+        const ruleCards = document.querySelectorAll('.rule-card');
+
+        searchBox.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            let visibleCount = 0;
+
+            ruleCards.forEach(card => {
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                const title = card.querySelector('.rule-title span:nth-child(2)').textContent.toLowerCase();
+                const body = card.querySelector('.rule-body').textContent.toLowerCase();
+
+                const matches = tags.includes(query) || title.includes(query) || body.includes(query);
+
+                if (matches || query === '') {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            updateProgress();
+        });
+
+        // Toggle Card
+        function toggleCard(event) {
+            const card = event.currentTarget.closest('.rule-card');
+            card.classList.toggle('open');
+            updateProgress();
+        }
+
+        // Update Progress Bar
+        function updateProgress() {
+            const openCards = document.querySelectorAll('.rule-card.open').length;
+            const visibleCards = document.querySelectorAll('.rule-card:not(.hidden)').length;
+            const percentage = visibleCards > 0 ? (openCards / visibleCards) * 100 : 0;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+
+        // Scroll to Top
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Persist checklist
+        document.querySelectorAll('.checklist-item input').forEach(checkbox => {
+            const label = checkbox.id;
+            const saved = localStorage.getItem('checklist_' + label);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem('checklist_' + label, checkbox.checked);
+            });
+        });
+    </script>
+</body>
+</html>
