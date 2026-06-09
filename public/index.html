@@ -114,11 +114,23 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+            font-weight: 600;
         }
 
         .theme-toggle:hover {
             transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        body.dark-mode .theme-toggle {
+            background: var(--secondary);
+            box-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.6);
         }
 
         body.dark-mode {
@@ -139,6 +151,20 @@
             background: #1a1a1a;
             color: #e0e0e0;
             border-color: #4d4d4d;
+        }
+
+        body.dark-mode .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(78, 205, 196, 0.4);
+        }
+
+        body.dark-mode .rules-section {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, #4a5fa8 0%, #5a3a7a 100%);
         }
 
         .rules-section {
